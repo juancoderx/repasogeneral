@@ -106,7 +106,7 @@ func main() {
 		case opcionBuscarEmpresa:
 			if len(empresasCreadas) == 0 {
 				fmt.Println(err)
-				fmt.Println("Holas")
+
 				break
 			}
 
