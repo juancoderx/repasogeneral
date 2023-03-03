@@ -7,11 +7,6 @@ import (
 	"github.com/juancoderx/repasogeneral/salario"
 )
 
-type informacionEmpresa struct {
-	nombre, presidente, pais     string
-	empleados, edades, fundacion int
-}
-
 type option int8
 
 func (o option) String() string {
@@ -31,6 +26,9 @@ func (o option) String() string {
 	case opcionPresentarEmpresa:
 		return fmt.Sprintf("%d. %s", opcionPresentarEmpresa, "Presentanción de una Empresa")
 
+	case opcionRegistarEmpleado:
+		return fmt.Sprintf("%d. %s", opcionRegistarEmpleado, "Registar Empleado")
+
 	case opcionCalcularSalario:
 		return fmt.Sprintf("%d. %s", opcionCalcularSalario, "Calcular Salario")
 
@@ -45,10 +43,14 @@ const (
 	opcionEliminarEmpresa
 	opcionEditarEmpresa
 	opcionPresentarEmpresa
+	opcionRegistarEmpleado
 	opcionCalcularSalario
 )
 
-var empresasCreadas []informacionEmpresa
+var (
+	empresasCreadas      []informacionEmpresa
+	empleadosRegistrados []informacionEmpleados
+)
 
 func main() {
 	var eleccion option = 1
@@ -67,7 +69,9 @@ func main() {
 		fmt.Println(opcionEliminarEmpresa)
 		fmt.Println(opcionEditarEmpresa)
 		fmt.Println(opcionPresentarEmpresa)
+		fmt.Println(opcionRegistarEmpleado)
 		fmt.Println(opcionCalcularSalario)
+
 		fmt.Println()
 
 		fmt.Print(">")
@@ -225,6 +229,29 @@ func main() {
 			fmt.Scan(&nombreEmpresa)
 
 			presentarEmpresa(nombreEmpresa)
+
+		case opcionRegistarEmpleado:
+			var datosEmpleados informacionEmpleados
+
+			fmt.Println("Nombre del Empleado")
+			fmt.Print(">")
+			fmt.Scan(&datosEmpleados.nombre)
+
+			fmt.Println("Cargo del empleado")
+			fmt.Print(">")
+			fmt.Scan(&datosEmpleados.cargo)
+
+			fmt.Println("Edad del empleado")
+			fmt.Print(">")
+			fmt.Scan(&datosEmpleados.edad)
+
+			fmt.Println("Años Laborando en la empresa")
+			fmt.Print(">")
+			fmt.Scan(&datosEmpleados.añosLaborando)
+
+			empleadosRegistrados = append(empleadosRegistrados, datosEmpleados)
+
+			fmt.Println(datosEmpleados.fichaEmpleado())
 
 		case opcionCalcularSalario:
 			var (
