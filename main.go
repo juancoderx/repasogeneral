@@ -29,6 +29,9 @@ func (o option) String() string {
 	case opcionRegistarEmpleado:
 		return fmt.Sprintf("%d. %s", opcionRegistarEmpleado, "Registar Empleado")
 
+	case opcionJubilacion:
+		return fmt.Sprintf("%d. %s", opcionJubilacion, "Revisar Jubilacion")
+
 	case opcionCalcularSalario:
 		return fmt.Sprintf("%d. %s", opcionCalcularSalario, "Calcular Salario")
 
@@ -44,6 +47,7 @@ const (
 	opcionEditarEmpresa
 	opcionPresentarEmpresa
 	opcionRegistarEmpleado
+	opcionJubilacion
 	opcionCalcularSalario
 )
 
@@ -70,6 +74,7 @@ func main() {
 		fmt.Println(opcionEditarEmpresa)
 		fmt.Println(opcionPresentarEmpresa)
 		fmt.Println(opcionRegistarEmpleado)
+		fmt.Println(opcionJubilacion)
 		fmt.Println(opcionCalcularSalario)
 
 		fmt.Println()
@@ -252,6 +257,27 @@ func main() {
 			empleadosRegistrados = append(empleadosRegistrados, datosEmpleados)
 
 			fmt.Println(datosEmpleados.fichaEmpleado())
+
+		case opcionJubilacion:
+			var revisonJubilacion informacionEmpleados
+
+			fmt.Println("Nombre del Empleado")
+			fmt.Print(">")
+			fmt.Scan(&revisonJubilacion.nombre)
+
+			fmt.Println("Cargo del Empleado")
+			fmt.Print(">")
+			fmt.Scan(&revisonJubilacion.cargo)
+
+			fmt.Println("Edad del empleado")
+			fmt.Print(">")
+			fmt.Scan(&revisonJubilacion.edad)
+
+			fmt.Println("Años que ha laborado")
+			fmt.Print(">")
+			fmt.Scan(&revisonJubilacion.añosLaborando)
+
+			fmt.Println(revisonJubilacion.antiguedadEmpleado())
 
 		case opcionCalcularSalario:
 			var (
