@@ -66,7 +66,7 @@ var (
 
 func main() {
 	var eleccion option = 1
-	err := errors.New("No hay empresas registradas")
+	err := errors.New("no hay empresas registradas")
 
 	for eleccion >= 1 {
 		fmt.Println("¡Registro de Empresas!")
