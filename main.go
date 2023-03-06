@@ -29,6 +29,12 @@ func (o option) String() string {
 	case opcionRegistarEmpleado:
 		return fmt.Sprintf("%d. %s", opcionRegistarEmpleado, "Registar Empleado")
 
+	case opcionEditarEmpleado:
+		return fmt.Sprintf("%d. %s", opcionEditarEmpleado, "Editar Empleado")
+
+	case opcionEliminarEmpleado:
+		return fmt.Sprintf("%d. %s", opcionEliminarEmpleado, "Eliminar Empleado")
+
 	case opcionJubilacion:
 		return fmt.Sprintf("%d. %s", opcionJubilacion, "Revisar Jubilacion")
 
@@ -47,13 +53,15 @@ const (
 	opcionEditarEmpresa
 	opcionPresentarEmpresa
 	opcionRegistarEmpleado
+	opcionEditarEmpleado
+	opcionEliminarEmpleado
 	opcionJubilacion
 	opcionCalcularSalario
 )
 
 var (
-	empresasCreadas      []informacionEmpresa
-	empleadosRegistrados []informacionEmpleados
+	empresasCreadas  []informacionEmpresa
+	listadoEmpleados Empleados
 )
 
 func main() {
@@ -68,12 +76,18 @@ func main() {
 		fmt.Println(empresasCreadas)
 		fmt.Println()
 
+		fmt.Println("Empleados registados:")
+		fmt.Println(listadoEmpleados)
+		fmt.Println()
+
 		fmt.Println(opcionDatosEmpresa)
 		fmt.Println(opcionBuscarEmpresa)
 		fmt.Println(opcionEliminarEmpresa)
 		fmt.Println(opcionEditarEmpresa)
 		fmt.Println(opcionPresentarEmpresa)
 		fmt.Println(opcionRegistarEmpleado)
+		fmt.Println(opcionEditarEmpleado)
+		fmt.Println(opcionEliminarEmpleado)
 		fmt.Println(opcionJubilacion)
 		fmt.Println(opcionCalcularSalario)
 
@@ -254,7 +268,7 @@ func main() {
 			fmt.Print(">")
 			fmt.Scan(&datosEmpleados.añosLaborando)
 
-			empleadosRegistrados = append(empleadosRegistrados, datosEmpleados)
+			listadoEmpleados = append(listadoEmpleados, datosEmpleados)
 
 			fmt.Println(datosEmpleados.fichaEmpleado())
 
@@ -278,6 +292,40 @@ func main() {
 			fmt.Scan(&revisonJubilacion.añosLaborando)
 
 			fmt.Println(revisonJubilacion.antiguedadEmpleado())
+
+		case opcionEditarEmpleado:
+			var editarEmpleado informacionEmpleados
+
+			fmt.Println("Ingrese el nombre del empleado a Editar")
+			fmt.Print(">")
+			fmt.Scan(&editarEmpleado.nombre)
+
+			fmt.Println("Ingrese el cargo del empleado")
+			fmt.Print(">")
+			fmt.Scan(&editarEmpleado.cargo)
+
+			fmt.Println("Ingrese la edad del empleado")
+			fmt.Print(">")
+			fmt.Scan(&editarEmpleado.edad)
+
+			fmt.Println("Ingrese los años de servicio del empleado")
+			fmt.Print(">")
+			fmt.Scan(&editarEmpleado.añosLaborando)
+
+			if exist := listadoEmpleados.editarEmpleado(editarEmpleado); !exist {
+				fmt.Println("El empleado no fue encontrado")
+			}
+
+		case opcionEliminarEmpleado:
+			var eliminarEmpleado informacionEmpleados
+
+			fmt.Println("Ingrese el nombre del empleado a eliminar")
+			fmt.Print(">")
+			fmt.Scan(&eliminarEmpleado.nombre)
+
+			if exist := listadoEmpleados.eliminarEmpleado(eliminarEmpleado); !exist {
+				fmt.Println("El empleado no fue encontrado")
+			}
 
 		case opcionCalcularSalario:
 			var (
