@@ -6,7 +6,7 @@ func (f Empleados) editarEmpleado(infoEmpleado informacionEmpleados) (exist bool
 			f[i].nombre = infoEmpleado.nombre
 			f[i].cargo = infoEmpleado.cargo
 			f[i].edad = infoEmpleado.edad
-			f[i].añosLaborando = infoEmpleado.añosLaborando
+			f[i].anosLaborando = infoEmpleado.anosLaborando
 
 			return true
 		}

@@ -7,7 +7,7 @@ type informacionEmpresa struct {
 
 type informacionEmpleados struct {
 	nombre, cargo       string
-	edad, añosLaborando int
+	edad, anosLaborando int
 }
 
 type Empleados []informacionEmpleados

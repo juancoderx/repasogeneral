@@ -2,7 +2,9 @@ package salario
 
 func Salario(edad int, experiencia bool) int {
 	var salarioTotal int = 2000
-	if edad >= 26 {
+	var edadBase int = 26
+
+	if edad >= edadBase {
 		salarioTotal += 1000
 	}
 

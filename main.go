@@ -7,6 +7,24 @@ import (
 	"github.com/juancoderx/repasogeneral/salario"
 )
 
+const (
+	opcionDatosEmpresa option = iota + 1
+	opcionBuscarEmpresa
+	opcionEliminarEmpresa
+	opcionEditarEmpresa
+	opcionPresentarEmpresa
+	opcionRegistarEmpleado
+	opcionEditarEmpleado
+	opcionEliminarEmpleado
+	opcionJubilacion
+	opcionCalcularSalario
+)
+
+var (
+	empresasCreadas  []informacionEmpresa
+	listadoEmpleados Empleados
+)
+
 type option int8
 
 func (o option) String() string {
@@ -39,30 +57,11 @@ func (o option) String() string {
 		return fmt.Sprintf("%d. %s", opcionJubilacion, "Revisar Jubilacion")
 
 	case opcionCalcularSalario:
-		return fmt.Sprintf("%d. %s", opcionCalcularSalario, "Calcular Salario")
-
+		return fmt.Sprintf("%d. %s", opcionCalcularSalario, "Calculo Salario")
 	}
 
 	return ""
 }
-
-const (
-	opcionDatosEmpresa option = iota + 1
-	opcionBuscarEmpresa
-	opcionEliminarEmpresa
-	opcionEditarEmpresa
-	opcionPresentarEmpresa
-	opcionRegistarEmpleado
-	opcionEditarEmpleado
-	opcionEliminarEmpleado
-	opcionJubilacion
-	opcionCalcularSalario
-)
-
-var (
-	empresasCreadas  []informacionEmpresa
-	listadoEmpleados Empleados
-)
 
 func main() {
 	var eleccion option = 1
@@ -226,7 +225,6 @@ func main() {
 					fmt.Scan(&empresasCreadas[i].edades)
 
 					break
-
 				}
 			}
 
@@ -266,7 +264,7 @@ func main() {
 
 			fmt.Println("Años Laborando en la empresa")
 			fmt.Print(">")
-			fmt.Scan(&datosEmpleados.añosLaborando)
+			fmt.Scan(&datosEmpleados.anosLaborando)
 
 			listadoEmpleados = append(listadoEmpleados, datosEmpleados)
 
@@ -289,7 +287,7 @@ func main() {
 
 			fmt.Println("Años que ha laborado")
 			fmt.Print(">")
-			fmt.Scan(&revisonJubilacion.añosLaborando)
+			fmt.Scan(&revisonJubilacion.anosLaborando)
 
 			fmt.Println(revisonJubilacion.antiguedadEmpleado())
 
@@ -310,7 +308,7 @@ func main() {
 
 			fmt.Println("Ingrese los años de servicio del empleado")
 			fmt.Print(">")
-			fmt.Scan(&editarEmpleado.añosLaborando)
+			fmt.Scan(&editarEmpleado.anosLaborando)
 
 			if exist := listadoEmpleados.editarEmpleado(editarEmpleado); !exist {
 				fmt.Println("El empleado no fue encontrado")
@@ -334,7 +332,7 @@ func main() {
 				experiencia          bool
 			)
 
-			fmt.Println("Ingrese edad del empleado a calcular")
+			fmt.Println("Ingrese edad del empleado a calculo")
 			fmt.Print(">")
 			fmt.Scan(&edad)
 
@@ -349,7 +347,6 @@ func main() {
 			fmt.Print("El salario según las caracteristicas es de: $")
 			fmt.Println(salario.Salario(edad, experiencia))
 			fmt.Println()
-
 		}
 	}
 }
