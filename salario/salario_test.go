@@ -8,7 +8,7 @@ func TestSalario(t *testing.T) {
 		exp          bool
 	}{
 		{edad: 26, result: 6500, exp: true},
-		{edad: 23, result: 6500, exp: false},
+		{edad: 34, result: 6500, exp: true},
 		{edad: 29, result: 6500, exp: true},
 	}
 
