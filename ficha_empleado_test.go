@@ -18,7 +18,7 @@ func Test_informacionEmpleados_fichaEmpleado(t *testing.T) {
 	}
 
 	for i := 0; i < len(tests); i++ {
-		revision := informacionEmpleados.fichaEmpleado(tests[i].empleado)
+		revision := tests[i].empleado.fichaEmpleado()
 
 		if revision != tests[i].stringEsperado {
 			t.Error("Se esperaba:", tests[i].stringEsperado)

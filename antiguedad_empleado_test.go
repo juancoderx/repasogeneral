@@ -20,7 +20,7 @@ func Test_informacionEmpleados_antiguedadEmpleado(t *testing.T) {
 	}
 
 	for i := 0; i < len(tests); i++ {
-		revision := informacionEmpleados.antiguedadEmpleado(tests[i].empleado)
+		revision := tests[i].empleado.antiguedadEmpleado()
 
 		if revision != tests[i].stringEsperado {
 			t.Error("Se esperaba:", tests[i].stringEsperado)
