@@ -16,8 +16,8 @@ func TestEmpleados_editarEmpleado(t *testing.T) {
 		},
 		{
 			empleado: informacionEmpleados{nombre: "Carlos", cargo: "Auxiliar", edad: 21, anosLaborando: 3},
-			edited:   informacionEmpleados{nombre: "Josue", cargo: "Ayudante", edad: 43, anosLaborando: 22},
-			found:    false,
+			edited:   informacionEmpleados{nombre: "Carlos", cargo: "Auxiliar", edad: 21, anosLaborando: 3},
+			found:    true,
 		},
 	}
 

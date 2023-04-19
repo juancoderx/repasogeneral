@@ -13,7 +13,7 @@ func Test_informacionEmpleados_fichaEmpleado(t *testing.T) {
 		},
 		{
 			empleado:       informacionEmpleados{nombre: "Carlos", cargo: "Operador", edad: 21, anosLaborando: 12},
-			stringEsperado: "Nombre: " + "Josue" + "\n" + "Cargo: " + "Soporte" + "\n" + "Edad: " + "21" + "\n" + "Años Laborando: " + "5" + "\n",
+			stringEsperado: "Nombre: " + "Carlos" + "\n" + "Cargo: " + "Operador" + "\n" + "Edad: " + "21" + "\n" + "Años Laborando: " + "12" + "\n",
 		},
 	}
 

@@ -15,7 +15,7 @@ func Test_informacionEmpleados_antiguedadEmpleado(t *testing.T) {
 		},
 		{
 			empleado:       informacionEmpleados{nombre: "Carlos", cargo: "Operador", edad: 21, anosLaborando: 12},
-			stringEsperado: "Nombre: " + "Josue" + "\n" + "Cargo: " + "Soporte" + "\n",
+			stringEsperado: "Nombre: " + "Carlos" + "\n" + "Cargo: " + "Operador" + "\n",
 		},
 	}
 
