@@ -15,6 +15,10 @@ func TestEmpleados_eliminarEmpleado(t *testing.T) {
 			empleado: informacionEmpleados{nombre: "Carlos", cargo: "Auxiliar", edad: 21, anosLaborando: 3},
 			found:    true,
 		},
+		{
+			empleado: informacionEmpleados{nombre: "Carlos", cargo: "Auxiliar", edad: 21, anosLaborando: 3},
+			found:    false,
+		},
 	}
 
 	var listadoEmpleados Empleados

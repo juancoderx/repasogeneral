@@ -1,26 +1,22 @@
 package main
 
-import "fmt"
-
 func (f informacionEmpleados) antiguedadEmpleado() (antiguedad string) {
 	antiguedad = "Nombre: " + f.nombre + "\n"
 	antiguedad += "Cargo: " + f.cargo + "\n"
 	var edadBase int = 55
 
 	if f.edad >= edadBase {
-		fmt.Println("Edad necesaria")
+		antiguedad += "Edad: Valida" + "\n"
 	} else {
-		fmt.Println("No cumple con la edad")
+		antiguedad += "Edad: No valida" + "\n"
 	}
 	var anosLaborandoBase int = 25
 
 	if f.anosLaborando >= anosLaborandoBase {
-		fmt.Println("Años cumplidos")
+		antiguedad += "Años: Validos" + "\n"
 	} else {
-		fmt.Println("Aun no cumple los años requeridos")
+		antiguedad += "Años: No validos" + "\n"
 	}
-
-	fmt.Println()
 
 	return antiguedad
 }

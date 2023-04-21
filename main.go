@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"fmt"
+	"strconv"
 
 	"github.com/juancoderx/repasogeneral/salario"
 )
@@ -30,7 +31,7 @@ type option int8
 func (o option) String() string {
 	switch o {
 	case opcionDatosEmpresa:
-		return fmt.Sprintf("%d. %s", opcionDatosEmpresa, "Nueva empresa")
+		return fmt.Sprintf("%d. %s", opcionDatosEmpresa, "Nueva Empresa")
 
 	case opcionBuscarEmpresa:
 		return fmt.Sprintf("%d. %s", opcionBuscarEmpresa, "Buscar una Empresa")
@@ -42,7 +43,7 @@ func (o option) String() string {
 		return fmt.Sprintf("%d. %s", opcionEditarEmpresa, "Editar una Empresa")
 
 	case opcionPresentarEmpresa:
-		return fmt.Sprintf("%d. %s", opcionPresentarEmpresa, "Presentanción de una Empresa")
+		return fmt.Sprintf("%d. %s", opcionPresentarEmpresa, "Presentación de una Empresa")
 
 	case opcionRegistarEmpleado:
 		return fmt.Sprintf("%d. %s", opcionRegistarEmpleado, "Registar Empleado")
@@ -174,6 +175,7 @@ func main() {
 			for i := 0; i < len(empresasCreadas); i++ {
 				if empresasCreadas[i].nombre == eliminarEmpresa {
 					found = true
+
 					empresasCreadas = append(empresasCreadas[:i], empresasCreadas[i+1:]...)
 
 					break
@@ -351,17 +353,18 @@ func main() {
 	}
 }
 
-func presentarEmpresa(empresa string) {
+func presentarEmpresa(empresa string) (empresaInfo string) {
 	for i := 0; i < len(empresasCreadas); i++ {
 		if empresasCreadas[i].nombre == empresa {
-			fmt.Println("Su presidente:", empresasCreadas[i].presidente)
-			fmt.Println("Año de su fundación:", empresasCreadas[i].fundacion)
-			fmt.Println("Empresa creada en:", empresasCreadas[i].pais)
-			fmt.Println("Cuenta con:", empresasCreadas[i].empleados, "empleados")
-			fmt.Println("La edad promedio de los empleados es:", empresasCreadas[i].edades, "años")
-			fmt.Println()
+			empresaInfo = "Presidente: " + empresasCreadas[i].presidente + "\n"
+			empresaInfo += "Fundacion: " + strconv.Itoa(empresasCreadas[i].fundacion) + "\n"
+			empresaInfo += "Pais: " + empresasCreadas[i].pais + "\n"
+			empresaInfo += "Empleados: " + strconv.Itoa(empresasCreadas[i].empleados) + "\n"
+			empresaInfo += "Edades: " + strconv.Itoa(empresasCreadas[i].edades) + "\n"
 
-			break
+			return empresaInfo
 		}
 	}
+
+	return ""
 }
