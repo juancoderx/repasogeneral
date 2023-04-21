@@ -19,6 +19,11 @@ func TestEmpleados_editarEmpleado(t *testing.T) {
 			edited:   informacionEmpleados{nombre: "Carlos", cargo: "Auxiliar", edad: 21, anosLaborando: 3},
 			found:    true,
 		},
+		{
+			empleado: informacionEmpleados{nombre: "Pedro", cargo: "Auxiliar", edad: 21, anosLaborando: 3},
+			edited:   informacionEmpleados{nombre: "Josue", cargo: "Cocina", edad: 43, anosLaborando: 4},
+			found:    false,
+		},
 	}
 
 	for i := 0; i < len(tests); i++ {
@@ -30,6 +35,10 @@ func TestEmpleados_editarEmpleado(t *testing.T) {
 
 		if revision != tests[i].found {
 			t.Error("Se esperaba", tests[i].found)
+		}
+
+		if !tests[i].found {
+			continue
 		}
 
 		if empleadosLista[0].nombre != tests[i].edited.nombre {
