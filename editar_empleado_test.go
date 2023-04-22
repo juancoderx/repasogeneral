@@ -27,6 +27,7 @@ func TestEmpleados_editarEmpleado(t *testing.T) {
 	}
 
 	for i := 0; i < len(tests); i++ {
+
 		var empleadosLista Empleados
 
 		empleadosLista = append(empleadosLista, tests[i].empleado)
@@ -42,19 +43,19 @@ func TestEmpleados_editarEmpleado(t *testing.T) {
 		}
 
 		if empleadosLista[0].nombre != tests[i].edited.nombre {
-			t.Error("Se esperaba:", tests[i].edited.nombre)
+			t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].edited.nombre, empleadosLista[0].nombre)
 		}
 
 		if empleadosLista[0].edad != tests[i].edited.edad {
-			t.Errorf("Se esperaban %d años de edad", tests[i].edited.edad)
+			t.Errorf("Se esperaban %d y se obtuvo %d", tests[i].edited.edad, empleadosLista[0].edad)
 		}
 
 		if empleadosLista[0].cargo != tests[i].edited.cargo {
-			t.Error("Se esperaba el cargo:", tests[i].edited.cargo)
+			t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].edited.cargo, empleadosLista[0].cargo)
 		}
 
 		if empleadosLista[0].anosLaborando != tests[i].edited.anosLaborando {
-			t.Errorf("Se esperaban %d años laborados", tests[i].empleado.anosLaborando)
+			t.Errorf("Se esperaba %d y se obtuvo %d", tests[i].empleado.anosLaborando, empleadosLista[0].anosLaborando)
 		}
 	}
 }

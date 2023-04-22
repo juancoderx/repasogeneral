@@ -18,10 +18,12 @@ func Test_informacionEmpleados_fichaEmpleado(t *testing.T) {
 	}
 
 	for i := 0; i < len(tests); i++ {
-		revision := tests[i].empleado.fichaEmpleado()
+		t.Run("", func(t *testing.T) {
+			revision := tests[i].empleado.fichaEmpleado()
 
-		if revision != tests[i].stringEsperado {
-			t.Error("Se esperaba:", tests[i].stringEsperado)
-		}
+			if revision != tests[i].stringEsperado {
+				t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].stringEsperado, revision)
+			}
+		})
 	}
 }

@@ -16,7 +16,7 @@ func TestSalario(t *testing.T) {
 		resultado := Salario(tests[i].edad, tests[i].exp)
 
 		if resultado != tests[i].result {
-			t.Error("Se esperaba", tests[i].result)
+			t.Errorf("Se esperaba %d y se obtuvo %d", tests[i].result, resultado)
 		}
 	}
 }

@@ -24,17 +24,19 @@ func Test_presentarEmpresa(t *testing.T) {
 	}
 
 	for i := 0; i < len(tests); i++ {
-		empresasCreadas = []informacionEmpresa{}
+		t.Run("", func(t *testing.T) {
+			empresasCreadas = []informacionEmpresa{}
 
-		if tests[i].stringEsperado != "" {
-			empresasCreadas = append(empresasCreadas, tests[i].empresas)
-		}
+			if tests[i].stringEsperado != "" {
+				empresasCreadas = append(empresasCreadas, tests[i].empresas)
+			}
 
-		datos := presentarEmpresa(tests[i].empresas.nombre)
+			datos := presentarEmpresa(tests[i].empresas.nombre)
 
-		if datos != tests[i].stringEsperado {
-			t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].stringEsperado, datos)
-		}
+			if datos != tests[i].stringEsperado {
+				t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].stringEsperado, datos)
+			}
+		})
 	}
 }
 
@@ -90,8 +92,10 @@ func Test_option_String(t *testing.T) {
 	}
 
 	for i := 0; i < len(tests); i++ {
-		if tests[i].opcion.String() != tests[i].stringEsperado {
-			t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].stringEsperado, tests[i].opcion.String())
-		}
+		t.Run("", func(t *testing.T) {
+			if tests[i].opcion.String() != tests[i].stringEsperado {
+				t.Errorf("Se esperaba %s y se obtuvo %s", tests[i].stringEsperado, tests[i].opcion.String())
+			}
+		})
 	}
 }
